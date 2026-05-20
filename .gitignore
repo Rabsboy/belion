@@ -1,0 +1,15 @@
+# Laravel
+/vendor
+
+# Node dependencies
+/node_modules
+/resources/js/node_modules
+
+
+
+# IDE / Editor
+/.idea
+/.vscode
+
+# PHPUnit cache
+/.phpunit.result.cache
