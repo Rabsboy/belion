@@ -83,24 +83,24 @@ export default function Categories({ categories }) {
         <AdminLayout>
             <Head title={a.categories_management ?? "Categories Management"} />
 
-            <div className="p-6 md:p-8">
+            <div className="p-4 md:p-8">
                 {/* Flash Message */}
 
                 {/* Header */}
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
+                <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 md:gap-4 mb-4 md:mb-8">
                     <div>
-                        <h1 className="text-3xl font-bold text-gray-900">
+                        <h1 className="text-xl md:text-3xl font-bold text-gray-900">
                             {a.categories_management ?? "Categories Management"}
                         </h1>
-                        <p className="text-gray-600 mt-1">
+                        <p className="text-xs md:text-base text-gray-600 mt-0.5 md:mt-1">
                             {(a.total_categories ?? "total categories").replace(":count", categories.total)}
                         </p>
                     </div>
                     <button
                         onClick={() => openModal()}
-                        className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-600 to-orange-500 text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all"
+                        className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-600 to-orange-500 text-white px-4 py-2 md:px-6 md:py-3 rounded-xl text-sm md:text-base font-semibold shadow-lg hover:shadow-xl transition-all w-full md:w-auto justify-center"
                     >
-                        <Plus size={20} />
+                        <Plus size={18} />
                         {a.add_category ?? "Add Category"}
                     </button>
                 </div>

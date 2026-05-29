@@ -85,20 +85,20 @@ export default function Navbar() {
                     : "bg-gradient-to-r from-primary-50 to-white"
             }`}
         >
-            <div className="max-w-7xl mx-auto px-6">
-                <div className="h-20 flex items-center justify-between">
+            <div className="max-w-7xl mx-auto px-4 md:px-6">
+                <div className="h-16 md:h-20 flex items-center justify-between">
                     {/* Logo */}
-                    <a href="/" className="flex items-center gap-3">
-                        <div className="w-12 h-12 bg-gradient-to-br from-primary-600 to-primary-500 rounded-2xl flex items-center justify-center">
-                            <span className="text-white text-2xl font-bold">
+                    <a href="/" className="flex items-center gap-2 md:gap-3">
+                        <div className="w-8 h-8 md:w-12 md:h-12 bg-gradient-to-br from-primary-600 to-primary-500 rounded-xl md:rounded-2xl flex items-center justify-center">
+                            <span className="text-white text-base md:text-2xl font-bold">
                                 Q
                             </span>
                         </div>
                         <div>
-                            <h1 className="text-2xl font-bold text-gray-900">
+                            <h1 className="text-base md:text-2xl font-bold text-gray-900">
                                 Bellion
                             </h1>
-                            <p className="text-xs text-gray-500">Eatery & Brew</p>
+                            <p className="hidden md:block text-xs text-gray-500">Eatery & Brew</p>
                         </div>
                     </a>
 
@@ -175,23 +175,23 @@ export default function Navbar() {
                     </div>
 
                     {/* Mobile */}
-                    <div className="lg:hidden flex items-center gap-2">
+                    <div className="lg:hidden flex items-center gap-1.5">
                         <button
                             onClick={() => setShowCart(true)}
-                            className="relative flex items-center gap-2 px-3 py-2 bg-gradient-to-r from-primary-600 to-primary-500 text-white font-semibold rounded-xl"
+                            className="relative flex items-center gap-1 px-2.5 py-2 bg-gradient-to-r from-primary-600 to-primary-500 text-white font-semibold rounded-xl"
                         >
-                            <ShoppingBag className="w-5 h-5" />
+                            <ShoppingBag className="w-4 h-4 md:w-5 md:h-5" />
                             {cartCount > 0 && (
-                                <span className="absolute -top-2 -right-2 w-5 h-5 bg-red-500 text-white text-xs font-bold rounded-full flex items-center justify-center">
+                                <span className="absolute -top-2 -right-2 w-4 h-4 md:w-5 md:h-5 bg-red-500 text-white text-[10px] md:text-xs font-bold rounded-full flex items-center justify-center">
                                     {cartCount}
                                 </span>
                             )}
                         </button>
                         <button
                             onClick={() => setOpen(!open)}
-                            className="p-2.5 rounded-xl hover:bg-primary-50"
+                            className="p-2 rounded-xl hover:bg-primary-50"
                         >
-                            {open ? <X /> : <Menu />}
+                            {open ? <X size={20} /> : <Menu size={20} />}
                         </button>
                     </div>
                 </div>
@@ -203,12 +203,13 @@ export default function Navbar() {
                     open ? "max-h-screen" : "max-h-0 overflow-hidden"
                 }`}
             >
-                <div className="bg-white border-t px-6 py-6 space-y-2">
+                <div className="bg-white border-t px-4 md:px-6 py-4 space-y-1">
                     {navLinks.map((link) => (
                         <a
                             key={link.href}
                             href={link.href}
-                            className={`block px-4 py-3 rounded-xl font-semibold ${
+                            onClick={() => setOpen(false)}
+                            className={`block px-4 py-2.5 rounded-xl text-sm font-semibold ${
                                 isActive(link.href)
                                     ? "bg-gradient-to-r from-primary-600 to-primary-500 text-white"
                                     : "text-gray-700 hover:bg-primary-50 hover:text-primary-600"
@@ -222,14 +223,20 @@ export default function Navbar() {
                             {userRole === 'customer' && (
                                 <a
                                     href={route('customer.orders.index')}
-                                    className="block px-4 py-3 rounded-xl font-semibold text-gray-700 hover:bg-primary-50 hover:text-primary-600"
+                                    onClick={() => setOpen(false)}
+                                    className="block px-4 py-2.5 rounded-xl text-sm font-semibold text-gray-700 hover:bg-primary-50 hover:text-primary-600"
                                 >
                                     {m['nav.orders']}
                                 </a>
                             )}
                             <a
                                 href={dashboardHref}
-                                className="block px-4 py-3 rounded-xl font-semibold bg-gradient-to-r from-primary-600 to-primary-500 text-white"
+                                onClick={() => setOpen(false)}
+                                className={`block px-4 py-2.5 rounded-xl text-sm font-semibold ${
+                                    currentPath === new URL(dashboardHref, window.location.origin).pathname
+                                        ? "bg-gradient-to-r from-primary-600 to-primary-500 text-white"
+                                        : "text-gray-700 hover:bg-primary-50 hover:text-primary-600"
+                                }`}
                             >
                                 {m['nav.dashboard']}
                             </a>
@@ -237,7 +244,8 @@ export default function Navbar() {
                     ) : (
                         <a
                             href={route('login')}
-                            className="block px-4 py-3 rounded-xl font-semibold text-gray-700 hover:bg-primary-50 hover:text-primary-600"
+                            onClick={() => setOpen(false)}
+                            className="block px-4 py-2.5 rounded-xl text-sm font-semibold text-gray-700 hover:bg-primary-50 hover:text-primary-600"
                         >
                             {t.login}
                         </a>

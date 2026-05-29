@@ -279,8 +279,8 @@ export default function Checkout() {
         <PublicLayout>
             <Head title={m['checkout.title']} />
 
-            <div className="max-w-4xl mx-auto px-6 py-12">
-                <h1 className="text-3xl font-bold text-gray-900 mb-8 border-l-4 border-primary-600 pl-4">
+            <div className="max-w-4xl mx-auto px-4 md:px-6 py-6 md:py-12">
+                <h1 className="text-xl md:text-3xl font-bold text-gray-900 mb-4 md:mb-8 border-l-4 border-primary-600 pl-3 md:pl-4">
                     {m['checkout.title']}
                 </h1>
 
@@ -295,9 +295,9 @@ export default function Checkout() {
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                     {/* Checkout Form */}
                     <div className="lg:col-span-2 space-y-8">
-                        <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-                            <h2 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
-                                <span className="flex items-center justify-center w-8 h-8 rounded-full bg-primary-100 text-primary-600 text-sm">
+                        <div className="bg-white p-4 md:p-6 rounded-2xl shadow-sm border border-gray-100">
+                            <h2 className="text-base md:text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                                <span className="flex items-center justify-center w-6 h-6 md:w-8 md:h-8 rounded-full bg-primary-100 text-primary-600 text-[11px] md:text-sm">
                                     1
                                 </span>
                                 {m['checkout.contact_details']}
@@ -391,14 +391,14 @@ export default function Checkout() {
                                 </div>
                             </div>
                         </div>
-                        <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-                            <h2 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
-                                <span className="flex items-center justify-center w-8 h-8 rounded-full bg-primary-100 text-primary-600 text-sm">
+                        <div className="bg-white p-4 md:p-6 rounded-2xl shadow-sm border border-gray-100">
+                            <h2 className="text-base md:text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                                <span className="flex items-center justify-center w-6 h-6 md:w-8 md:h-8 rounded-full bg-primary-100 text-primary-600 text-[11px] md:text-sm">
                                     2
                                 </span>
                                 {m['checkout.fulfillment_method'] ?? 'Metode Penerimaan'}
                             </h2>
-                            <div className="grid grid-cols-2 gap-4">
+                            <div className="grid grid-cols-2 gap-3 md:gap-4">
                                 <label
                                     className={`border rounded-xl p-4 cursor-pointer flex items-center gap-3 transition-all ${
                                         form.fulfillment_type === 'delivery'
@@ -459,9 +459,9 @@ export default function Checkout() {
                         </div>
 
                         {form.fulfillment_type === 'delivery' && (
-                        <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-                            <h2 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
-                                <span className="flex items-center justify-center w-8 h-8 rounded-full bg-primary-100 text-primary-600 text-sm">
+                        <div className="bg-white p-4 md:p-6 rounded-2xl shadow-sm border border-gray-100">
+                            <h2 className="text-base md:text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                                <span className="flex items-center justify-center w-6 h-6 md:w-8 md:h-8 rounded-full bg-primary-100 text-primary-600 text-[11px] md:text-sm">
                                     3
                                 </span>
                                 {m['checkout.delivery_address']}
@@ -560,10 +560,10 @@ export default function Checkout() {
                         </div>
                         )}
 
-                        <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-                            <h2 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
-                                <span className="flex items-center justify-center w-8 h-8 rounded-full bg-primary-100 text-primary-600 text-sm">
-                                    {form.fulfillment_type === 'delivery' ? '4' : '3'}
+                        <div className="bg-white p-4 md:p-6 rounded-2xl shadow-sm border border-gray-100">
+                            <h2 className="text-base md:text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                                <span className="flex items-center justify-center w-6 h-6 md:w-8 md:h-8 rounded-full bg-primary-100 text-primary-600 text-[11px] md:text-sm">
+                                    4
                                 </span>
                                 {m['checkout.payment_method']}
                             </h2>
@@ -597,8 +597,8 @@ export default function Checkout() {
                     </div>
 
                     <div className="space-y-6">
-                        <div className="bg-gray-50 p-6 rounded-2xl border border-gray-200 sticky top-24">
-                            <h2 className="text-xl font-bold text-gray-900 mb-4">
+                        <div className="bg-gray-50 p-4 md:p-6 rounded-2xl border border-gray-200 lg:sticky lg:top-24">
+                            <h2 className="text-lg md:text-xl font-bold text-gray-900 mb-4">
                                 {m['checkout.order_summary']}
                             </h2>
                             <div className="space-y-3 max-h-60 overflow-y-auto pr-2 custom-scrollbar">

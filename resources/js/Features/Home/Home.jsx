@@ -52,13 +52,20 @@ const features = (m) => [
 ];
 
 export default function Home() {
-    const { translations } = usePage().props;
+    const { translations, store_open } = usePage().props;
     const { messages: m } = translations;
+    const storeIsOpen = store_open !== false && store_open !== "0";
     const featureList = features(m);
 
     return (
         <PublicLayout>
             <Head title="Bellion Bake and Brew" />
+
+            {!storeIsOpen && (
+                <div className="fixed top-20 left-0 right-0 z-50 bg-red-600 text-white text-center py-2 px-4 text-sm font-semibold">
+                    {m['menu.store_closed_title'] ?? "Toko Sedang Tutup"} — {m['menu.store_closed_desc'] ?? "Maaf, toko sedang tutup. Anda masih bisa melihat menu, tetapi tidak dapat melakukan pemesanan untuk saat ini."}
+                </div>
+            )}
 
             <main className="w-full min-h-screen bg-white">
                 <section className="relative overflow-hidden min-h-screen flex items-center">
@@ -144,7 +151,7 @@ export default function Home() {
                     </div>
                 </section>
 
-                <section className="py-24 bg-gradient-to-b from-white to-gray-50">
+               {/* <section className="py-24 bg-gradient-to-b from-white to-gray-50">
                     <div className="max-w-7xl mx-auto px-6">
                         <div className="text-center mb-16">
                             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
@@ -176,7 +183,7 @@ export default function Home() {
                             ))}
                         </div>
                     </div>
-                </section>
+                </section>*/}
 
                 <section className="py-32 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
                     <div className="absolute inset-0 opacity-30">

@@ -39,6 +39,7 @@ class HandleInertiaRequests extends Middleware
                 'error' => fn () => $request->session()->get('error'),
             ],
             'delivery_fee' => (float) (\App\Features\Admin\Models\Setting::where('key', 'delivery_fee')->value('value') ?? 50),
+            'store_open' => (bool) (\App\Features\Admin\Models\Setting::where('key', 'store_open')->value('value') ?? true),
             'store_lat' => (float) config('services.osm.store_lat', -6.2800),
             'store_lng' => (float) config('services.osm.store_lng', 106.8700),
             'osm_tile_url' => config('services.osm.tile_url', 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'),

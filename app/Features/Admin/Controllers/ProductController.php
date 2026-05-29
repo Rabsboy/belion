@@ -51,6 +51,8 @@ class ProductController extends Controller
                 'name' => 'required|string|max:255',
                 'category_id' => 'required|exists:categories,id',
                 'price' => 'required|numeric|min:0',
+                'stock' => 'nullable|integer|min:0',
+                'is_active' => 'nullable|boolean',
                 'description' => 'nullable|string',
                 'image' => 'nullable|image|max:2048',
                 'variations' => 'nullable|array',
@@ -69,9 +71,6 @@ class ProductController extends Controller
             } else {
                 $validated['images_name'] = '';
             }
-
-            $validated['stock'] = (int) ($validated['stock'] ?? 0);
-            $validated['is_active'] = true;
 
             Product::create($validated);
 
@@ -97,6 +96,8 @@ class ProductController extends Controller
                 'name' => 'required|string|max:255',
                 'category_id' => 'required|exists:categories,id',
                 'price' => 'required|numeric|min:0',
+                'stock' => 'nullable|integer|min:0',
+                'is_active' => 'nullable|boolean',
                 'description' => 'nullable|string',
                 'image' => 'nullable|image|max:2048',
                 'variations' => 'nullable|array',
@@ -129,6 +130,13 @@ class ProductController extends Controller
             \Log::error('Product update failed: ' . $e->getMessage() . "\n" . $e->getTraceAsString());
             return back()->withErrors(['error' => 'Failed to update product. Please try again.']);
         }
+    }
+
+    public function toggleActive(Product $product)
+    {
+        $product->update(['is_active' => !$product->is_active]);
+        $status = $product->is_active ? 'activated' : 'deactivated';
+        return back()->with('success', "Product {$status} successfully!");
     }
 
     public function destroy(Product $product)

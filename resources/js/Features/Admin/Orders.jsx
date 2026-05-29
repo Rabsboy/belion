@@ -95,12 +95,12 @@ export default function Orders({ orders, activeTab = 'semua' }) {
         <AdminLayout>
             <Head title={a.orders_management ?? "Orders Management"} />
 
-            <div className="p-6 md:p-8">
-                <div className="mb-8">
-                    <h1 className="text-3xl font-bold text-gray-900">
+            <div className="p-4 md:p-8">
+                <div className="mb-4 md:mb-8">
+                    <h1 className="text-xl md:text-3xl font-bold text-gray-900">
                         {a.orders_management ?? "Orders Management"}
                     </h1>
-                    <p className="text-gray-600 mt-1">
+                    <p className="text-xs md:text-base text-gray-600 mt-0.5 md:mt-1">
                         {(a.total_orders_count ?? "total orders").replace(":count", orders.total)}
                     </p>
                 </div>

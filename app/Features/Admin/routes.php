@@ -33,6 +33,7 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
     Route::get('/products', [ProductController::class, 'index'])->name('products.index');
     Route::post('/products', [ProductController::class, 'store'])->name('products.store');
     Route::post('/products/{product}', [ProductController::class, 'update'])->name('products.update');
+    Route::post('/products/{product}/toggle-active', [ProductController::class, 'toggleActive'])->name('products.toggle-active');
     Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
     
     // Settings Routes

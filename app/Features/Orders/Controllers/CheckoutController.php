@@ -19,6 +19,11 @@ class CheckoutController extends Controller
 {
     public function index()
     {
+        $storeOpen = \App\Features\Admin\Models\Setting::where('key', 'store_open')->value('value');
+        if ($storeOpen === '0') {
+            return redirect()->route('menu')->with('error', 'Maaf, toko sedang tutup. Silakan coba lagi nanti.');
+        }
+
         return Inertia::render('Orders/Checkout');
     }
 
@@ -112,11 +117,19 @@ class CheckoutController extends Controller
 
         $user = Auth::user();
 
-        if ($user->is_banned) {
+        if ($user && $user->is_banned) {
             Log::warning("Banned user {$user->id} attempted to place order");
             return response()->json([
                 'message' => 'Your account has been suspended. Please contact support for assistance.',
             ], 403);
+        }
+
+        $storeOpen = \App\Features\Admin\Models\Setting::where('key', 'store_open')->value('value');
+        if ($storeOpen === '0') {
+            Log::warning('Order placement blocked - store is closed');
+            return response()->json([
+                'message' => 'Maaf, toko sedang tutup. Silakan coba lagi nanti.',
+            ], 503);
         }
 
         DB::beginTransaction();

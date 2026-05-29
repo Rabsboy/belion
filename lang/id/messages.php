@@ -184,6 +184,7 @@ return [
     'menu.search_title' => 'Cari menu kami',
     'menu.search_placeholder' => 'Cari hidangan...',
     'menu.live_status' => 'Dapur aktif: menerima pesanan',
+    'menu.live_status_closed' => 'Dapur tutup: tidak menerima pesanan',
     'menu.browse_by_category' => 'Jelajahi berdasarkan kategori',
     'menu.tap_to_filter' => 'Ketuk untuk memfilter dan tetap di halaman yang sama.',
     'menu.all_items' => 'Semua Item',
@@ -191,7 +192,7 @@ return [
     'menu.highlights' => 'Menu unggulan',
     'menu.showing' => 'Menampilkan :from-:to dari :total item',
     'menu.popular_pick' => 'Pilihan populer',
-    'menu.add_to_order' => 'Tambah ke pesanan',
+    'menu.add_to_order' => 'Tambah ',
     'menu.no_results' => 'Tidak ada hasil untuk ":query"',
     'menu.no_products' => 'Tidak ada produk tersedia saat ini. Silakan periksa kembali nanti.',
     'menu.select_variation' => 'Pilih Variasi',
@@ -202,6 +203,10 @@ return [
     'menu.added_to_cart' => 'Berhasil menambahkan :product ke keranjang!',
     'menu.max_per_product' => 'Maksimal 10 item per konfigurasi produk.',
     'menu.from_price' => 'Dari :price',
+    'menu.out_of_stock' => 'Stok Habis',
+    'menu.add' => 'Tambah',
+    'menu.store_closed_title' => 'Toko Sedang Tutup',
+    'menu.store_closed_desc' => 'Maaf, toko sedang tutup. Anda masih bisa melihat menu, tetapi tidak dapat melakukan pemesanan untuk saat ini.',
 
     /*
     |--------------------------------------------------------------------------

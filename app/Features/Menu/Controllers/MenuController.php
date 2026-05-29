@@ -30,7 +30,7 @@ class MenuController extends Controller
             });
         }
 
-        $products = $query->paginate(9)->withQueryString();
+        $products = $query->orderByRaw('(is_active = 1 AND stock > 0) DESC')->orderBy('name')->paginate(9)->withQueryString();
 
         return Inertia::render('Menu/Menu', [
             'categories' => $categories,
