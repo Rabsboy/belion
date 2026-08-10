@@ -1,5 +1,6 @@
 # Laravel
 /vendor
+.env
 
 # Node dependencies
 /node_modules
